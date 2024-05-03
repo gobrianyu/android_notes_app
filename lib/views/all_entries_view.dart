@@ -127,51 +127,56 @@ class AllEntriesView extends StatelessWidget {
   Widget _createListElementForEntry(BuildContext context, JournalEntry entry) {
     return GestureDetector(
       onTap: () => _navigateToEntry(context, entry), // Opens a new entry view when tapped.
-      child: Container(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            // Card/thumbnail showing snippet of text.
-            AspectRatio(
-              aspectRatio: 2/3,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.topLeft,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.4),
-                        spreadRadius: 2,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      )
-                    ],
-                  borderRadius: const BorderRadius.all(Radius.circular(7)),
-                  color: const Color.fromARGB(255, 255, 253, 255)),
-                child: Text(
-                  entry.text,
-                  overflow: TextOverflow.clip,
-                )
-              ),
-            ),
-            // Title and time stamp.
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Column(
-                children: [
-                  Text(
-                    entry.name,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold
+      child: Semantics(
+        label: 'Note Entry: ${entry.name}. Last updated ${entry.updatedAtAsString}',
+        child: ExcludeSemantics(
+          child: Container(
+            alignment: Alignment.center,
+            child: Column(
+              children: [
+                // Card/thumbnail showing snippet of text.
+                AspectRatio(
+                  aspectRatio: 2/3,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.topLeft,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius: 2,
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          )
+                        ],
+                      borderRadius: const BorderRadius.all(Radius.circular(7)),
+                      color: const Color.fromARGB(255, 255, 253, 255)),
+                    child: Text(
+                      entry.text,
+                      overflow: TextOverflow.clip,
                     )
                   ),
-                  Text(entry.updatedAtAsString)
-                ]
-              ),
+                ),
+                // Title and time stamp.
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Column(
+                    children: [
+                      Text(
+                        entry.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold
+                        )
+                      ),
+                      Text(entry.updatedAtAsString)
+                    ]
+                  ),
+                )
+              ]
             )
-          ]
-        )
+          ),
+        ),
       ),
     );
   }
