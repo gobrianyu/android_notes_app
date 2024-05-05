@@ -31,7 +31,7 @@ Cite anything (website or other resource) or anyone that assisted you in creatin
 
 Remember to include all online resources (other than information learned in lecture or section and android documentation) such as Stack Overflow, other blogs, students in this class, or TAs and instructors who helped you during Office Hours. If you did not use any such resources, please state so explicitly.
 
-Answer here:
+Online resources used:
 - https://api.flutter.dev/flutter/widgets/ListView-class.html
 - https://medium.com/@taraparakj75/how-to-wrap-text-on-overflow-in-flutter-a5eade5ea97a
 - https://api.flutter.dev/flutter/dart-core/DateTime-class.html
@@ -68,6 +68,36 @@ Answer here:
 - https://stackoverflow.com/questions/48927928/how-to-add-clear-button-to-textfield-widget
 - https://stackoverflow.com/questions/52603494/how-to-change-textformfield-input-text-color-in-flutter
 - https://stackoverflow.com/questions/49040679/flutter-how-to-make-a-textfield-with-hinttext-but-no-underline
+- https://www.dhiwise.com/post/flutter-search-bar-tutorial-for-building-a-powerful-search-functionality
+- https://medium.com/codechai/implementing-search-in-flutter-17dc5aa72018
+- https://github.com/jesusrp98/search_page/blob/master/lib/search_page.dart
+- https://stackoverflow.com/questions/74419344/flutter-text-field-appears-when-button-is-clicked-icons-buttons
+- https://stackoverflow.com/questions/65431424/show-widget-when-button-is-clicked-dart-flutter
+- https://api.flutter.dev/flutter/material/AppBar/leading.html
+- https://stackoverflow.com/questions/46057353/controlling-state-from-outside-of-a-statefulwidget
+- https://stackoverflow.com/questions/60510427/how-to-show-the-keyboard-automatically-for-a-textfield-in-flutter
+- https://stackoverflow.com/questions/51182803/shrink-container-to-smaller-child-rather-than-expanding-to-fill-parent
+- https://stackoverflow.com/questions/75434794/flutter-how-to-make-container-height-wrap-around-its-content
+- https://api.flutter.dev/flutter/widgets/Wrap-class.html
+- https://stackoverflow.com/questions/66285602/how-to-wrap-gesturedetector-with-another-gesturedetector-and-get-events-everywhe
+- https://api.flutter.dev/flutter/material/PopupMenuButton-class.html
+- https://api.flutter.dev/flutter/rendering/RelativeRect/RelativeRect.fromDirectional.html
+- https://api.flutter.dev/flutter/dart-ui/TextDirection.html
+- https://stackoverflow.com/questions/61756271/how-to-set-flutter-showmenu-starting-point
+- https://stackoverflow.com/questions/51644300/scrollable-flutter-popup-menu
+- https://stackoverflow.com/questions/77357991/flutter-how-to-understand-the-relativerect-positioning-in-the-showmenu
+- https://stackoverflow.com/questions/43349013/how-to-open-a-popupmenubutton
+- https://api.flutter.dev/flutter/gestures/LongPressGestureRecognizer/onLongPress.html
+- https://api.flutter.dev/flutter/rendering/RelativeRect-class.html
+- https://stackoverflow.com/questions/56927576/how-to-change-background-color-of-popupmenuitem-in-flutter
+- https://api.flutter.dev/flutter/material/ThemeData-class.html
+- https://docs.flutter.dev/cookbook/design/themes
+- https://api.flutter.dev/flutter/material/ThemeData/ThemeData.dark.html
+- https://stackoverflow.com/questions/67794181/how-to-change-theme-in-flutter
+- https://docs.flutter.dev/cookbook/design/themes
+- https://stackoverflow.com/questions/59577114/how-to-make-container-fix-positioned-even-after-keyboard-is-displayed
+
+Thank you to Charyl Li for helping me figure out a silly bug.
 
 ## Reflection Prompts
 

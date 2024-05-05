@@ -4,7 +4,7 @@ import 'package:journal/models/journal_entry.dart';
 // It has an editable title, ability for dark mode, and can
 // update its journal entries.
 class Journal{
-  final bool darkMode; // Not used in this submission; I was too ambitious :(
+  bool darkMode; // Not used in this submission; I was too ambitious :(
   final String name;
   final List<JournalEntry> _entries;
 
@@ -35,6 +35,18 @@ class Journal{
   // Not used in this submission; I was too ambitious :(
   bool get isDark {
     return darkMode;
+  }
+
+  void toggleMode() {
+    darkMode = !darkMode;
+  }
+
+  void removeEntry(JournalEntry entry) {
+    final index = _entries.indexWhere((knownEntry) => knownEntry.uuid == entry.uuid);
+    if (index == -1) {
+      throw Exception('Entry does not exist');
+    }
+    _entries.remove(_entries[index]);
   }
 
   // Checks if Journal holds provided JournalEntry.

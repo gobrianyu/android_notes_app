@@ -55,8 +55,12 @@ class JournalEntry {
       }
 
       // Formatting the hour to be 12 hour
-      if (date.hour >= 12) {
+      if (date.hour > 12) {
         return '${date.hour % 12}:$minute p.m.';
+      } else if (date.hour == 12) {
+        return '${date.hour}:$minute p.m.';
+      } else if (date.hour == 0) {
+        return '12:$minute a.m.';
       }
       return '${date.hour}:$minute a.m.';
     } else if (date.year == DateTime.now().year) { // Case: same year

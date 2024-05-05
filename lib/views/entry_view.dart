@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:journal/models/journal_entry.dart';
+import 'package:journal/providers/journal_provider.dart';
+import 'package:provider/provider.dart';
 
 // View for a single journal entry. Includes
 // editable title and text fields.
@@ -16,6 +18,7 @@ class EntryView extends StatefulWidget {
 class _EntryViewState extends State<EntryView>{
   String currentText = ''; // Text field that we update.
   String currentName = ''; // Title/name field that we update.
+  bool darkMode = false;
 
   // Initialises state to have currentText be original entry text,
   // and the same for name.
@@ -24,11 +27,18 @@ class _EntryViewState extends State<EntryView>{
     super.initState();
     currentText = widget.entry.text;
     currentName = widget.entry.name;
+    darkMode = context.read<JournalProvider>().journal.darkMode; 
   }
 
   // Building the view.
   @override
   Widget build(BuildContext context) {
+    Color textColour = darkMode
+          ? const Color.fromARGB(255, 230, 225, 229) 
+          : const Color.fromARGB(255, 84, 66, 61);
+    Color secondaryTextColour = darkMode
+          ? const Color.fromARGB(150, 230, 225, 229) 
+          : const Color.fromARGB(150, 84, 66, 61);
     return PopScope(
       canPop: false, // Allows us to redirect popping from the back button.
       onPopInvoked: (didPop) {if (!didPop) {_popBack(context);}}, // Calls _popBack.
@@ -36,17 +46,17 @@ class _EntryViewState extends State<EntryView>{
         appBar: AppBar(
           title: TextFormField(
             initialValue: currentName,
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
-            decoration: const InputDecoration(
+            style: TextStyle(fontWeight: FontWeight.bold, color: textColour, fontSize: 20),
+            decoration: InputDecoration(
               hintText: 'Title', 
               hintStyle: TextStyle(
                 fontWeight: FontWeight.bold, 
-                color: Color.fromARGB(120, 0, 0, 0), 
+                color: secondaryTextColour,
                 fontSize: 20
               ),
               labelStyle: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: textColour,
                 fontSize: 20
               ),
             ),
@@ -56,6 +66,7 @@ class _EntryViewState extends State<EntryView>{
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: TextFormField(
+            autofocus: true,
             initialValue: currentText,
             expands: true,
             maxLines: null,
@@ -74,9 +85,9 @@ class _EntryViewState extends State<EntryView>{
   _popBack(BuildContext context){
     if (currentText.trim().isNotEmpty || currentName.trim().isNotEmpty) {
       if (currentName.trim().isEmpty) {
-        currentName = 'Unnamed Note'; // Default title.
+        currentName = 'Unnamed note'; // Default title.
       }
-      JournalEntry updatedEntry = JournalEntry.withUpdatedText(widget.entry, currentText, currentName);
+      JournalEntry updatedEntry = JournalEntry.withUpdatedText(widget.entry, currentText, currentName.trim());
       Navigator.pop(context, updatedEntry);
     } else {
       Navigator.pop(context);

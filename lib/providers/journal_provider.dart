@@ -14,6 +14,8 @@ class JournalProvider extends ChangeNotifier {
   // No parameters.
   Journal get journal => _journal.clone();
 
+  bool get themeMode => _journal.isDark;
+
   // Upserts provided journal entry to the journal
   // and notifies its listeners.
   // Parameter:
@@ -21,6 +23,16 @@ class JournalProvider extends ChangeNotifier {
   // No returns.
   void upsertJournalEntry(JournalEntry entry) {
     _journal.upsertEntry(entry);
+    notifyListeners();
+  }
+
+  void removeJournalEntry(JournalEntry entry) {
+    _journal.removeEntry(entry);
+    notifyListeners();
+  }
+
+  void toggleMode() {
+    _journal.toggleMode();
     notifyListeners();
   }
 }
