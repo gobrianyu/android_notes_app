@@ -95,7 +95,13 @@ Comprehensive list of online resources used:
 - https://stackoverflow.com/questions/70719432/deletekey-function-in-hive-flutter-not-working
 - https://stackoverflow.com/questions/71052857/hive-flutter-are-boxes-deleted-when-app-is-closed
 - https://github.com/isar/hive/issues/620
-- 
+- https://github.com/isar/hive/issues/236
+- https://stackoverflow.com/questions/64108897/in-flutter-using-hive-how-would-you-add-a-custom-object-from-a-post-response-bod
+- https://pub.dev/documentation/hive/latest/hive/HiveType-class.html
+- https://stackoverflow.com/questions/56613875/datetime-comparison-in-dart
+- https://api.flutter.dev/flutter/dart-core/List/sort.html
+- https://pub.dev/documentation/flutter_secure_storage/latest/flutter_secure_storage/flutter_secure_storage-library.html
+- https://www.dhiwise.com/post/guide-to-flutter-secure-storage-protect-your-dat
 
 Thank you to Charyl Li for helping me figure out a silly bug. And thank you to Jacklyn Cui for helping me figure out an issue with my adapter.
 
