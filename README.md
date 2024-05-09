@@ -20,6 +20,8 @@ Initial app UI sketch can be found in the `assets` folder. File name is `sketch.
 
 For this second submission, I had more time to add the features I had wanted to incorporate in my first submission, such as a search tool, dark mode, and more. The app is now quite similar to what I had envisioned in that sketch!
 
+**Robustness:** In the current implementation, uninstalling the app or accidentally deleting the Hive box the user's data is stored in would (obviously) wipe the data. One potential workaround is to connect the user's data to an online cloud service (e.g. onedrive, icloud).
+
 
 ## Resources Used
 Comprehensive list of online resources used:
@@ -108,7 +110,7 @@ Thank you to Charyl Li for helping me figure out a silly bug. And thank you to J
 
 ## Reflection Prompts
 
-### New Learnings
+### New Learnings (Part 2)
 
 The one tool I thought was most important for this submission cycle was Hive. Being able to store and encrypt data is an absolute game changer for what apps I can now create. 
 
@@ -117,11 +119,18 @@ The one tool I thought was most important for this submission cycle was Hive. Be
 
 I had a lot of difficulty figuring out the constructor for my adapter. It was thanks to Jacklyn Cui that I managed to dig myself out of that rut!
 
+
 ### Mistakes
 
 It was a silly mistake. I had a call for the original entry rather than the new entry when popping from navigator.
 This was the source of a multiple-hour headache.
 
+
 ### Meta
 
 As I spent a lot of time working on extra features during this cycle, I would say it took me well over 10 hours of work this week. The actual part 2 bit only took a couple hours though.
+
+
+### Self Grade
+
+I would give myself 100. I believe I have satisfied every criteria, and gone above and beyond with my app. I'm really happy with how it came out!
