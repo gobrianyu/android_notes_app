@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:journal/providers/journal_provider.dart';
 import 'package:journal/views/entry_view.dart';
 import 'package:journal/models/journal_entry.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AllEntriesView extends StatefulWidget {
@@ -18,11 +17,13 @@ class AllEntriesView extends StatefulWidget {
 // Displays default message when no journal entries exist. Can
 // create new journal entries from this view.
 class AllEntriesViewState extends State<AllEntriesView> {
-  final TextEditingController searchController = TextEditingController();
-  bool inSearch = false;
-  bool darkMode = false;
+  final TextEditingController searchController = TextEditingController(); // Controller for search bar.
+  bool inSearch = false; // True if user is in search.
+  bool darkMode = false; // True if user is in dark mode.
   List<JournalEntry> matchingEntries = [];
 
+
+  // Initialises this view's state.
   @override
   void initState() {
     super.initState();
@@ -30,6 +31,8 @@ class AllEntriesViewState extends State<AllEntriesView> {
     darkMode = context.read<JournalProvider>().journal.isDark;
   }
 
+
+  // Updates results when user types or deletes in search.
   void onSearchUpdate() {
     final entries = context.read<JournalProvider>().journal.entriesList;
     if (searchController.text.isNotEmpty) {
@@ -44,12 +47,14 @@ class AllEntriesViewState extends State<AllEntriesView> {
     setState(() {});
   }
 
+
   // Disposes controller after use.
   @override
   void dispose() {
     searchController.dispose();
     super.dispose();
   }
+
 
   // Builds the home page.
   // Parameter:
@@ -67,7 +72,7 @@ class AllEntriesViewState extends State<AllEntriesView> {
       builder: (context, journalProvider, _) {
         final journal = journalProvider.journal; // Our provider.
         return Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: false, // Stops contents from dynamically changing with keyboard popup.
           // The appbar. Holds a simple title and the 'new note' button.
           appBar: inSearch // Creates either default app bar or search app bar depending on what state we should be in.
                 ? searchAppBar()
@@ -97,20 +102,13 @@ class AllEntriesViewState extends State<AllEntriesView> {
               }
               // Default message.
               if (journal.entriesList.isEmpty) {
-                return Container(
-                  alignment: Alignment.center,
+                return SizedBox(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Nothing here!',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: secondaryTextColour,
-                        )
-                      ),
-                      Text(
-                        'Get started writing',
+                        'Nothing here!\nGet started writing',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
                           color: secondaryTextColour,
@@ -126,6 +124,7 @@ class AllEntriesViewState extends State<AllEntriesView> {
                               color: secondaryTextColour,
                             )
                           ),
+                          // Little icon appending default text.
                           Container(
                             padding: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
@@ -154,8 +153,14 @@ class AllEntriesViewState extends State<AllEntriesView> {
     );
   }
 
+
+  // Builds app bar child when user is in search, including an 
+  // editable search field, a back button, and a clear button.
+  // No parameters.
   AppBar searchAppBar() {
     return AppBar(
+
+      // Back button.
       leading: Builder(
         builder: (context) {
           return Semantics(
@@ -174,6 +179,7 @@ class AllEntriesViewState extends State<AllEntriesView> {
           );
         }
       ),
+      
       // The search field.
       title: TextField(
         autofocus: true, // Pops up keyboard immediately for user to type in search.
@@ -194,6 +200,81 @@ class AllEntriesViewState extends State<AllEntriesView> {
     );
   }
 
+
+  // Builds default app bar child (i.e. when user is not in search),
+  // including a title, search button, theme toggle, and new entry button.
+  // Parameters:
+  // - bool inSearch: whether the user is in search; passed only to set state in case pressed
+  // - BuildContext context: context to build from
+  // - VoidCallback toggleSearch: call back method for when user presses search button
+  // - VoidCallback toggleMode: call back method for when user toggles mode button
+  AppBar defaultAppBar(bool inSearch, BuildContext context, VoidCallback toggleSearch, VoidCallback toggleMode) {
+    return AppBar(
+      // Title.
+      title: Semantics(
+        label: 'All notes',
+        child: const ExcludeSemantics(
+          child: Text(
+            'All notes',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+            )
+          ),
+        ),
+      ),
+
+      // Three action buttons.
+      actions: <Widget>[
+        // Search button.
+        Semantics(
+          label: 'Button: Search notes. Double tap to activate.',
+          child: ExcludeSemantics(
+            child: IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                toggleSearch();
+              },
+            ),
+          ),
+        ),
+
+        // New entry button.
+        Semantics(
+          label: 'Button: New note. Double tap to activate.',
+          child: ExcludeSemantics(
+            child: IconButton(
+              icon: const Icon(Icons.drive_file_rename_outline),
+              tooltip: 'New note',
+              onPressed: () {
+                JournalEntry newEntry = JournalEntry.newEntry();
+                // Did not include a call to upsert here so that empty entries are not saved to the journal.
+                _navigateToEntry(context, newEntry);
+              }
+            ),
+          ),
+        ),
+
+        // Toggle dark mode button.
+        Semantics(
+          label: darkMode ? 'Button: Switch to light mode. Double tap to activate.' : 'Button: Switch to dark mode. Double tap to activate.',
+          child: ExcludeSemantics(
+            child: IconButton(
+              icon: darkMode ? const Icon(Icons.nightlight_round) : const Icon(Icons.sunny),
+              onPressed: () {
+                toggleMode();
+              }
+            ),
+          ),
+        )
+      ]
+    );
+  }
+
+
+  // Creates the list view child for the main app body from the provided list of entries.
+  // Parameters:
+  // - BuildContext context: context to build view from
+  // - List<JournalEntry> entries: list of entries to show
   Column _createListView(BuildContext context, List<JournalEntry> entries) {
     return Column(
       children: <Widget>[
@@ -214,60 +295,6 @@ class AllEntriesViewState extends State<AllEntriesView> {
           )
         )
       ],
-    );
-  }
-
-  AppBar defaultAppBar(bool inSearch, BuildContext context, VoidCallback toggleSearch, VoidCallback toggleMode) {
-    return AppBar(
-      title: Semantics(
-        label: 'All notes',
-        child: const ExcludeSemantics(
-          child: Text(
-            'All notes',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-            )
-          ),
-        ),
-      ),
-      actions: <Widget>[
-        Semantics(
-          label: 'Button: Search notes. Double tap to activate.',
-          child: ExcludeSemantics(
-            child: IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                toggleSearch();
-              },
-            ),
-          ),
-        ),
-        Semantics(
-          label: 'Button: New note. Double tap to activate.',
-          child: ExcludeSemantics(
-            child: IconButton(
-              icon: const Icon(Icons.drive_file_rename_outline),
-              tooltip: 'New note',
-              onPressed: () {
-                JournalEntry newEntry = JournalEntry();
-                // Did not include a call to upsert here so that empty entries are not saved to the journal.
-                _navigateToEntry(context, newEntry);
-              }
-            ),
-          ),
-        ),
-        Semantics(
-          label: darkMode ? 'Button: Switch to light mode. Double tap to activate.' : 'Button: Switch to dark mode. Double tap to activate.',
-          child: ExcludeSemantics(
-            child: IconButton(
-              icon: darkMode ? const Icon(Icons.nightlight_round) : const Icon(Icons.sunny),
-              onPressed: () {
-                toggleMode();
-              }
-            ),
-          ),
-        )
-      ]
     );
   }
 
@@ -360,12 +387,16 @@ class AllEntriesViewState extends State<AllEntriesView> {
     );
   }
 
-  // Calls when 
+  // Calls when user either creates a new entry or selects an entry from list and pushes
+  // the view to the correct entry.
+  // Parameters:
+  // - BuildContext context: context to build from
+  // - JournalEntry entry: journal entry to push to
   Future<void> _navigateToEntry(BuildContext context, JournalEntry entry) async {
     // Navigate to EntryView and wait for result.
     final newEntry = await Navigator.push(
       context, 
-      MaterialPageRoute(builder: (context) => EntryView(entry: entry))
+      MaterialPageRoute(builder: (context) => EntryView(entry: entry)),
     );
 
     // Multiple checks for the return.
@@ -380,22 +411,31 @@ class AllEntriesViewState extends State<AllEntriesView> {
     }
     
     final provider = Provider.of<JournalProvider>(context, listen: false);
-    provider.upsertJournalEntry(newEntry);
+    provider.upsertJournalEntry(newEntry); // Calling Journal Provider's upsert method.
   }
 
+
+  // Removes entry when user deletes.
+  // Parameters:
+  // - BuildContext context: app's current context
+  // - JournalEntry entry: entry to delete
   void _removeEntry(BuildContext context, JournalEntry entry) {
     final provider = Provider.of<JournalProvider>(context, listen: false);
-    provider.removeJournalEntry(entry);
+    provider.removeJournalEntry(entry); // Calling Journal Provider's delete method.
   }
 
+
+  // Toggles dark mode for app.
+  // Parameter:
+  // - BuildContext context: app's current context (i.e. whether currently in dark mode)
   void _toggleMode(BuildContext context) {
-    
     final provider = Provider.of<JournalProvider>(context, listen: false);
-    provider.toggleMode();
+    provider.toggleMode(); // Calling Journal Provider's toggle method.
   }
+
 
   // Unused method from template. Time formatting can be found in JournalEntry class.
-  _formatDateTime(DateTime when){
-    return DateFormat.yMd().add_jm().format(when);
-  }
+  // _formatDateTime(DateTime when){
+  //   return DateFormat.yMd().add_jm().format(when);
+  // }
 }

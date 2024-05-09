@@ -1,23 +1,47 @@
 
+import 'package:hive/hive.dart';
 import 'package:journal/utils/uuid_maker.dart';
+part 'journal_entry.g.dart';
 
 // Represents a single journal entry with a title (or name),
 // text entry, an identifying label and time stamps for when
 // the journal entry was created and last updated.
+@HiveType(typeId: 1)
 class JournalEntry {
+  @HiveField(0)
   final String name; // Title for journal entry
+
+  @HiveField(1)
   final String text; // Main text body in journal entry
+
+  @HiveField(2)
   final UUIDString uuid; // Label to identify journal entry.
+
+  @HiveField(3)
   final DateTime updatedAt;
+
+  @HiveField(4)
   final DateTime createdAt;
+
+
+  /// This constructor is used for hive to use
+  JournalEntry({
+    required this.text,
+    required this.uuid,
+    required this.updatedAt,
+    required this.createdAt,
+    required this.name
+  });
+
 
   // Factory function constructor for JournalEntry.
   // Initialises createdAt to current time.
-  factory JournalEntry({text='', name=''}) {
+  factory JournalEntry.newEntry({text='', name=''}) {
     final when = DateTime.now();
     return JournalEntry.withTextUUIDUpdatedAtCreatedAt(name: name, text: text, uuid: UUIDMaker.generateUUID(), 
       updatedAt: when, createdAt: when);
   }
+
 
   // Getter replacing DataTime's toString method.
   // Returns the journal entry's updatedAt time as a String.
@@ -25,6 +49,7 @@ class JournalEntry {
   String get updatedAtAsString{
     return _timeAsString(date: updatedAt);
   }
+
 
   // Helper method for updatedAtAsString getter.
   // Returns the provided DataTime date as a human readable String.
@@ -70,6 +95,7 @@ class JournalEntry {
     return '${numToMonth(date.month)} ${date.day}, ${date.year}';
   }
 
+
   // Helper method for _timeAsString.
   // Simple switch statement that takes an integer and returns the
   // first 3 letters of the corresponding month as a String.
@@ -95,6 +121,7 @@ class JournalEntry {
     }
   }
 
+
   // Constructor for JournalEntry; updates
   // journal entry fields with new parameters.
   // Parameters:
@@ -105,6 +132,7 @@ class JournalEntry {
   // - DateTime createdAt: time journal entry was created
   JournalEntry.withTextUUIDUpdatedAtCreatedAt({required this.name, required this.text, required this.uuid, required this.updatedAt, required this.createdAt});
   
+
   // Constructor for JournalEntry; creates an updated JournalEntry
   // given new text and name arguments.
   // Parameters:

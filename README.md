@@ -7,31 +7,22 @@ CSE netid: brian127
 
 email: brian127@uw.edu
 
+
 ## Design Vision
-Tell us about what your design vision was.
- - Functionally
- - Aesthetically
- - Data
 
-I wanted to create a notes app, similar to the one I use on my phone: Samsung Notes.
-I particularly wanted to recreate the two-column grid in that app. The app functionality
-itself is quite simple. The only addition I made was an editable title field; which isn't
-all too revolutionary.
+**Functionally:** I wanted to create a notes app, similar to the one I usually use on my phone: Samsung Notes. In terms of functionality, I included a search feature on the main page, the ability to delete entries, and editable title fields for each note entry. All other features are pretty standard, aside from the dark mode toggle.
 
-Where in your repo can we find the design sketches that you made?
-In the assets folder. The file name is sketch.jpg.
+**Aesthetically:** I particularly wanted to recreate the two-column grid in the app as it is my most favourite form factor for a notes app to date. I also wanted to add a dark mode for my app, since I know I always like taking notes on a dark background. Allowing the user to toggle back and forth satisfies more people!
 
-If your final design changed from your initial sketches please explain what changed and why.
-I was really ambitious in my sketch, where I wanted to add more functionalities than I ended
-up adding, such as a way to delete files, more buttons, perhaps some text formatting, and
-colour themes. I was unable to realise these largely because of time limitations.
+**Data:** For this second submission, the focus was on preserving and encrypting user data, so that the user doesn't lose their notes every restart, but that their data is also securely stored to mitigate privacy concerns.
+
+Initial app UI sketch can be found in the `assets` folder. File name is `sketch.jpg`.
+
+For this second submission, I had more time to add the features I had wanted to incorporate in my first submission, such as a search tool, dark mode, and more. The app is now quite similar to what I had envisioned in that sketch!
+
 
 ## Resources Used
-Cite anything (website or other resource) or anyone that assisted you in creating your solution to this assignment.
-
-Remember to include all online resources (other than information learned in lecture or section and android documentation) such as Stack Overflow, other blogs, students in this class, or TAs and instructors who helped you during Office Hours. If you did not use any such resources, please state so explicitly.
-
-Online resources used:
+Comprehensive list of online resources used:
 - https://api.flutter.dev/flutter/widgets/ListView-class.html
 - https://medium.com/@taraparakj75/how-to-wrap-text-on-overflow-in-flutter-a5eade5ea97a
 - https://api.flutter.dev/flutter/dart-core/DateTime-class.html
@@ -96,40 +87,35 @@ Online resources used:
 - https://stackoverflow.com/questions/67794181/how-to-change-theme-in-flutter
 - https://docs.flutter.dev/cookbook/design/themes
 - https://stackoverflow.com/questions/59577114/how-to-make-container-fix-positioned-even-after-keyboard-is-displayed
+- https://stackoverflow.com/questions/73494409/how-to-remove-data-from-hive-box-without-leaving-null
+- https://docs.flutter.dev/data-and-backend/state-mgmt/simple
+- https://stackoverflow.com/questions/65852838/i-get-a-weird-error-when-trying-to-initialize-hive
+- https://community.cloudera.com/t5/Support-Questions/Update-and-Delete-are-not-working-in-Hive/td-p/57358/page/2
+- https://stackoverflow.com/questions/62882123/flutter-hive-deleteat-is-making-the-value-null-instead-of-deleting-it
+- https://stackoverflow.com/questions/70719432/deletekey-function-in-hive-flutter-not-working
+- https://stackoverflow.com/questions/71052857/hive-flutter-are-boxes-deleted-when-app-is-closed
+- https://github.com/isar/hive/issues/620
+- 
 
-Thank you to Charyl Li for helping me figure out a silly bug.
+Thank you to Charyl Li for helping me figure out a silly bug. And thank you to Jacklyn Cui for helping me figure out an issue with my adapter.
+
 
 ## Reflection Prompts
 
 ### New Learnings
-What new tools, techniques, or other skills did you learn while doing this assignment?
 
-How do you think you might use what you learned in the future?
+The one tool I thought was most important for this submission cycle was Hive. Being able to store and encrypt data is an absolute game changer for what apps I can now create. 
 
-Answer here: 
-Once again, a lot of new classes and widgets. I also gained a better understanding of Providers.
-I'm still a littler iffy but I think this has been great practice for the future.
 
 ## Challenges
-What was hard about doing this assignment?
-What did you learn from working through those challenges?
-How could the assignment be improved for future years?
 
-Answer here:
-Oh my goodness I had so many stumbles. I think getting to talk to some other people while developing
-was a big help.
+I had a lot of difficulty figuring out the constructor for my adapter. It was thanks to Jacklyn Cui that I managed to dig myself out of that rut!
 
 ### Mistakes
-What is one mistake that you made or misunderstanding that you had while you were completing this assignment?
 
-What is something that you learned or will change in the future as a result of this mistake or misunderstanding?
-
-Answer here:
 It was a silly mistake. I had a call for the original entry rather than the new entry when popping from navigator.
 This was the source of a multiple-hour headache.
 
 ### Meta
-How much time (in minutes or hours of active work) did you spend working on this assignment? What parts took the longest?
-What could we do to make this assignment better in the future?
 
-Far longer than I had anticipated. ~8 hours I would say. The longest part was me debugging my silly mistakes...
+As I spent a lot of time working on extra features during this cycle, I would say it took me well over 10 hours of work this week. The actual part 2 bit only took a couple hours though.

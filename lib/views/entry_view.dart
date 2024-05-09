@@ -3,6 +3,7 @@ import 'package:journal/models/journal_entry.dart';
 import 'package:journal/providers/journal_provider.dart';
 import 'package:provider/provider.dart';
 
+
 // View for a single journal entry. Includes
 // editable title and text fields.
 class EntryView extends StatefulWidget {
@@ -14,11 +15,13 @@ class EntryView extends StatefulWidget {
   State<EntryView> createState() => _EntryViewState();
 }
 
+
 // State for EntryView
 class _EntryViewState extends State<EntryView>{
   String currentText = ''; // Text field that we update.
   String currentName = ''; // Title/name field that we update.
   bool darkMode = false;
+
 
   // Initialises state to have currentText be original entry text,
   // and the same for name.
@@ -30,19 +33,23 @@ class _EntryViewState extends State<EntryView>{
     darkMode = context.read<JournalProvider>().journal.darkMode; 
   }
 
+
   // Building the view.
   @override
   Widget build(BuildContext context) {
-    Color textColour = darkMode
-          ? const Color.fromARGB(255, 230, 225, 229) 
-          : const Color.fromARGB(255, 84, 66, 61);
+    Color textColour = darkMode 
+          ? const Color.fromARGB(255, 230, 225, 229) // Primary text colour for dark mode.
+          : const Color.fromARGB(255, 84, 66, 61); // Primary text colour for light mode.
     Color secondaryTextColour = darkMode
-          ? const Color.fromARGB(150, 230, 225, 229) 
-          : const Color.fromARGB(150, 84, 66, 61);
+          ? const Color.fromARGB(150, 230, 225, 229) // Secondary text colour for dark mode.
+          : const Color.fromARGB(150, 84, 66, 61); // Secondary text colour for light mode.
+    
     return PopScope(
       canPop: false, // Allows us to redirect popping from the back button.
       onPopInvoked: (didPop) {if (!didPop) {_popBack(context);}}, // Calls _popBack.
       child: Scaffold(
+
+        // Editable title text field.
         appBar: AppBar(
           title: TextFormField(
             initialValue: currentName,
@@ -50,7 +57,7 @@ class _EntryViewState extends State<EntryView>{
             decoration: InputDecoration(
               hintText: 'Title', 
               hintStyle: TextStyle(
-                fontWeight: FontWeight.bold, 
+                fontWeight: FontWeight.bold,
                 color: secondaryTextColour,
                 fontSize: 20
               ),
@@ -63,6 +70,8 @@ class _EntryViewState extends State<EntryView>{
             onChanged: (name) => {currentName = name},
           ),
         ),
+
+        // Main editable text field body.
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: TextFormField(
@@ -77,6 +86,7 @@ class _EntryViewState extends State<EntryView>{
       ),
     );
   }
+
 
   // Pops the view back to all entries view, saving/updating
   // the journal entry on the way. Entries with both empty text
