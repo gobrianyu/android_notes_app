@@ -30,7 +30,7 @@ class Journal{
   // Getter for current Journal's entries.
   // No parameters.
   // Returns List<JournalEntry>: a copy of _entries sorted by most recently updated.
-  List<JournalEntry> get entriesList {
+  List<JournalEntry> get entries {
     List<JournalEntry> copyOfEntries = List.from(_entries);
     copyOfEntries.sort((a, b) => b.updatedAt.compareTo(a.updatedAt)); // Sorting entries list by most recently updated.
     return List.from(copyOfEntries);
@@ -57,11 +57,6 @@ class Journal{
   // - JournalEntry entry: the journal entry to remove
   // No return.
   void removeEntry(JournalEntry entry) {
-    // final index = _entries.indexWhere((knownEntry) => knownEntry.uuid == entry.uuid);
-    // if (index == -1) {
-    //   throw Exception('Entry does not exist');
-    // }
-    // _entries.remove(_entries[index]);
     _storage.delete(entry.uuid);
   }
 
@@ -73,12 +68,6 @@ class Journal{
   // - JournalEntry entry: entry to search for in Journal
   // No return.
   void upsertEntry(JournalEntry entry) {
-    // final index = _entries.indexWhere((knownEntry) => knownEntry.uuid == entry.uuid);
-    // if (index == -1) {
-    //   _entries.add(entry);
-    // } else {
-    //   _entries[index] = entry;
-    // }
     _storage.put(entry.uuid, entry);
   }
 

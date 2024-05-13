@@ -34,7 +34,7 @@ class AllEntriesViewState extends State<AllEntriesView> {
 
   // Updates results when user types or deletes in search.
   void onSearchUpdate() {
-    final entries = context.read<JournalProvider>().journal.entriesList;
+    final entries = context.read<JournalProvider>().journal.entries;
     if (searchController.text.isNotEmpty) {
       matchingEntries = entries.where((entry) {
         // Adds entry to list if either text or title contains search text.
@@ -101,7 +101,7 @@ class AllEntriesViewState extends State<AllEntriesView> {
                 }
               }
               // Default message.
-              if (journal.entriesList.isEmpty) {
+              if (journal.entries.isEmpty) {
                 return SizedBox(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +145,7 @@ class AllEntriesViewState extends State<AllEntriesView> {
                 );
               }
               // Our journal entries.
-              return _createListView(context, journal.entriesList);
+              return _createListView(context, journal.entries);
             }
           ),
         );

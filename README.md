@@ -135,3 +135,9 @@ As I spent a lot of time working on extra features during this cycle, I would sa
 ### Self Grade
 
 I would give myself 100. I believe I have satisfied every criteria, and gone above and beyond with my app. I'm really happy with how it came out!
+
+### Additional Notes
+
+**JournalEntry Constructors:** There were three provided constructors for journal entry (as of part 1; an additional constructor was created for Hive in part 2). The first is a factory function; a default constructor that is useful for creating an empty or new journal entry. This calls the next constructor: `JournalEntry.withTextUUIDUpdatedAtCreatedAt`, whose purpose is mainly to generate a journal entry with a unique UUID. Finally, `JournalEntry.withUpdatedText` is used to update journal entries that have been edited or renamed.
+
+**Copying Lists:** It is not necessary to make a copy of every entry in Journal's `entries` getter because its `_entries` field is final (and therefore immutable).
