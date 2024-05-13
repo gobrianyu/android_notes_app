@@ -1,4 +1,5 @@
 # Food Finder
+Please not that this README file references many items in Part 2 of the project. Please refer to this [commit](https://gitlab.cs.washington.edu/cse340-24spring-students/5_journal-brian127/-/commit/9fbec897372c9cf51aff4a9df9c0f6e66a52cd18#9ae8895218a7d8776c13b520760ade759b4a9440) titled 'Completed initial submission.' Alternatively, the `journal_mocker.dart` file still exists in this most recent commit, but with the code commented out. 
 
 ## Student Information
 Name: Brian Yu
