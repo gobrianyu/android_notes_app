@@ -1,13 +1,18 @@
+# README WIP
+
 # Notes App
-Please not that this README file references many items in Part 2 of the project. Please refer to this [commit](https://gitlab.cs.washington.edu/cse340-24spring-students/5_journal-brian127/-/commit/9fbec897372c9cf51aff4a9df9c0f6e66a52cd18#9ae8895218a7d8776c13b520760ade759b4a9440) titled 'Completed initial submission.' Alternatively, the `journal_mocker.dart` file still exists in this most recent commit, but with the code commented out. 
 
-## Student Information
-Name: Brian Yu
+**App developed by Brian Yu for CSE 340 class at University of Washington**
 
-CSE netid: brian127
+This is an android notes app (iOS not tested) visually similar in design to Samsung's notes app. This project uses [Hive](https://docs.hivedb.dev/#/) to securely store user data (notes files) locally. Some files in this project are redundant or useless and were only included as part of my class's dev cycle submission requirements. There may be padding issues on certain elements depending on your device's screen ratio and OS font size.
 
-email: brian127@uw.edu
-
+**Features**
+- Main page: allows access to all written notes; displays note titles, contents, last updated time, and more.
+- Note page: allows editing of note's title and content.
+- Secure storage: encrypts and stores notes locally.
+- Search: allows user to search through notes.
+- Theme: toggles between dark and light mode; not persistent (i.e. does not remember last used theme on close; does not query user's OS theme).
+- Accessibility: screen reader semantics, contrast, font size support (limited).
 
 ## Design Vision
 
