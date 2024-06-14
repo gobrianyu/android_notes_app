@@ -14,6 +14,13 @@ This is an android notes app (iOS not tested) visually similar in design to Sams
 - Theme: toggles between dark and light mode; not persistent (i.e. does not remember last used theme on close; does not query user's OS theme).
 - Accessibility: screen reader semantics, contrast, font size support (limited).
 
+<p float="left">
+  <img src="./assets/main_light.jpg" alt="Screenshot of app's main page in light mode" width="200"/>
+  <img src="./assets/main_dark.jpg" alt="Screenshot of app's main page in dark mode" width="200"/>
+  <img src="./assets/note_light.jpg" alt="Screenshot of app's note editing page in light mode" width="200"/>
+  <img src="./assets/search_dark.jpg" alt="Screenshot of app's search page in dark mode" width="200"/>
+</p>
+
 ## Design Vision
 
 **Functionally:** I wanted to create a notes app, similar to the one I usually use on my phone: Samsung Notes. In terms of functionality, I included a search feature on the main page, the ability to delete entries, and editable title fields for each note entry. All other features are pretty standard, aside from the dark mode toggle.
