@@ -16,9 +16,9 @@ This is an android notes app (iOS not tested) visually similar in design to Sams
 
 <p float="left">
   <img src="./assets/main_light.jpg" alt="Screenshot of app's main page in light mode" width="200"/>
+  <img src="./assets/note_light.jpg" alt="Screenshot of app's note editing page in light mode" width="200"/>
   <img src="./assets/main_dark.jpg" alt="Screenshot of app's main page in dark mode" width="200"/>
   <img src="./assets/search_dark.jpg" alt="Screenshot of app's search page in dark mode" width="200"/>
-  <img src="./assets/note_light.jpg" alt="Screenshot of app's note editing page in light mode" width="200"/>
 </p>
 
 ## Resources Used
