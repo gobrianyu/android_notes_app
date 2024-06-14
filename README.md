@@ -17,24 +17,9 @@ This is an android notes app (iOS not tested) visually similar in design to Sams
 <p float="left">
   <img src="./assets/main_light.jpg" alt="Screenshot of app's main page in light mode" width="200"/>
   <img src="./assets/main_dark.jpg" alt="Screenshot of app's main page in dark mode" width="200"/>
-  <img src="./assets/note_light.jpg" alt="Screenshot of app's note editing page in light mode" width="200"/>
   <img src="./assets/search_dark.jpg" alt="Screenshot of app's search page in dark mode" width="200"/>
+  <img src="./assets/note_light.jpg" alt="Screenshot of app's note editing page in light mode" width="200"/>
 </p>
-
-## Design Vision
-
-**Functionally:** I wanted to create a notes app, similar to the one I usually use on my phone: Samsung Notes. In terms of functionality, I included a search feature on the main page, the ability to delete entries, and editable title fields for each note entry. All other features are pretty standard, aside from the dark mode toggle.
-
-**Aesthetically:** I particularly wanted to recreate the two-column grid in the app as it is my most favourite form factor for a notes app to date. I also wanted to add a dark mode for my app, since I know I always like taking notes on a dark background. Allowing the user to toggle back and forth satisfies more people!
-
-**Data:** For this second submission, the focus was on preserving and encrypting user data, so that the user doesn't lose their notes every restart, but that their data is also securely stored to mitigate privacy concerns.
-
-Initial app UI sketch can be found in the `assets` folder. File name is `sketch.jpg`.
-
-For this second submission, I had more time to add the features I had wanted to incorporate in my first submission, such as a search tool, dark mode, and more. The app is now quite similar to what I had envisioned in that sketch!
-
-**Robustness:** In the current implementation, uninstalling the app or accidentally deleting the Hive box the user's data is stored in would (obviously) wipe the data. One potential workaround is to connect the user's data to an online cloud service (e.g. onedrive, icloud).
-
 
 ## Resources Used
 Comprehensive list of online resources used:
@@ -120,33 +105,6 @@ Comprehensive list of online resources used:
 
 Thank you to Charyl Li for helping me figure out a silly bug. And thank you to Jacklyn Cui for helping me figure out an issue with my adapter.
 
-
-## Reflection Prompts
-
-### New Learnings (Part 2)
-
-The one tool I thought was most important for this submission cycle was Hive. Being able to store and encrypt data is an absolute game changer for what apps I can now create. 
-
-
-## Challenges
-
-I had a lot of difficulty figuring out the constructor for my adapter. It was thanks to Jacklyn Cui that I managed to dig myself out of that rut!
-
-
-### Mistakes
-
-It was a silly mistake. I had a call for the original entry rather than the new entry when popping from navigator.
-This was the source of a multiple-hour headache.
-
-
-### Meta
-
-As I spent a lot of time working on extra features during this cycle, I would say it took me well over 10 hours of work this week. The actual part 2 bit only took a couple hours though.
-
-
-### Self Grade
-
-I would give myself 100. I believe I have satisfied every criteria, and gone above and beyond with my app. I'm really happy with how it came out!
 
 ### Additional Notes
 
