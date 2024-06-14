@@ -1,5 +1,3 @@
-# README WIP
-
 # Notes App
 
 **App developed by Brian Yu for CSE 340 class at University of Washington**
